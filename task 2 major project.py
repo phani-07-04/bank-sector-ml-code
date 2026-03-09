@@ -1,13 +1,24 @@
 import pandas as pd
-from tabulate import tabulate
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # Load the dataset
 df = pd.read_csv('loan-predictionUC.csv.xlsx')
 
-# Display basic statistics in a table
-print("Basic Statistics:")
-print(tabulate(df.describe(), headers='keys', tablefmt='pretty'))
+# Basic statistics
+print(df.describe())
 
-# Display the first few rows of the dataset in a table
-print("\nFirst Few Rows of the Dataset:")
-print(tabulate(df.head(), headers='keys', tablefmt='pretty'))
+# Distribution of Loan Status
+sns.countplot(data=df, x='Loan_status')
+plt.title('Distribution of Loan Status')
+plt.show()
+
+# Income vs Loan Amount
+sns.scatterplot(data=df, x='ApplicantIncome', y='LoanAmount', hue='Loan_status')
+plt.title('Applicant Income vs Loan Amount')
+plt.show()
+
+# Property Area vs Loan Status
+sns.countplot(data=df, x='Property_area', hue='Loan_status')
+plt.title('Loan Status by Property Area')
+plt.show()
