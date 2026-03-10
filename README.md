@@ -1,1 +1,1 @@
-# bank-sector-ml-code 
+# loan-approval-prediction-ml
